@@ -829,6 +829,7 @@ const dismissSiteLoader = () => {
     siteLoader.hidden = true;
   }, 620);
 };
+window.addEventListener('load', dismissSiteLoader);
 
 const applyAssistantLanguage = () => {
   const assistantCopy = getAssistantCopy();
