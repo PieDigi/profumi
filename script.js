@@ -1,3 +1,4 @@
+const BASE = import.meta.env.BASE_URL;
 const root = document.documentElement;
 const siteLoader = document.getElementById("site-loader");
 const heroSection = document.querySelector(".hero-section");
