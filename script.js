@@ -893,7 +893,7 @@ const applyLanguage = (language, { persist = true } = {}) => {
   applyStaticLanguage();
   applyAssistantLanguage();
   applySecondaryProjectLanguage();
-  hydrateProjectCards();
+  //hydrateProjectCards();
 
   if (activeProjectButton) {
     activeProjectData = getProjectDetail(activeProjectButton);
@@ -959,8 +959,8 @@ const getProjectCardIndexLabel = (button) =>
 const applyProjectCoverTheme = (button, cover) => {
   const theme = cover?.theme ?? {};
   const styleEntries = [
-    ["--cover-logo-asset", cover?.logo?.asset ? `url("${BASE}${cover.logo.asset}")` : ""],
-    ["--cover-art-asset", cover?.art?.asset ? `url("${BASE}${cover.art.asset}")` : ""],
+    /*["--cover-logo-asset", cover?.logo?.asset ? `url("${BASE}${cover.logo.asset}")` : ""],
+    ["--cover-art-asset", cover?.art?.asset ? `url("${BASE}${cover.art.asset}")` : ""],*/
     ["--card-hover-image", (cover?.art?.asset || cover?.logo?.asset) ? `url("${BASE}${cover.art?.asset || cover.logo?.asset}")` : ""],
     ["--cover-origin-x", theme.originX],
     ["--cover-origin-y", theme.originY],
@@ -1079,7 +1079,7 @@ const renderProjectCardCover = (button, localizedDetail) => {
     resetProjectCardVariants(button);
     button.classList.add("project-card__button--logo-burst");
     button.dataset.coverProfile = cover.profile;
-    applyProjectCoverTheme(button, cover);
+    // applyProjectCoverTheme(button, cover);
     button.innerHTML = buildLogoBurstCardMarkup({ indexLabel, detail: localizedDetail, cover });
     return true;
   }
@@ -1117,7 +1117,7 @@ const renderProjectCardCover = (button, localizedDetail) => {
   return false;
 };
 
-const hydrateProjectCards = () => {
+/*const hydrateProjectCards = () => {
   projectButtons.forEach((button) => {
     const projectId = button.dataset.projectId;
     const projectDetail = projectId ? PROJECT_DETAILS[projectId] : null;
@@ -1134,7 +1134,7 @@ const hydrateProjectCards = () => {
       );
       return;
     }
-
+*/
     const title = button.querySelector("strong");
     const type = button.querySelector(".project-card__type");
     const intro = button.querySelector("p");
@@ -1626,7 +1626,7 @@ currentLanguage = getStoredLanguage() ?? "zh";
 document.body.classList.toggle("is-low-memory-device", lowMemoryDevice);
 initializeSkillBadges();
 issueSections.forEach((section) => issueObserver.observe(section));
-applyLanguage(currentLanguage, { persist: false });
+// applyLanguage(currentLanguage, { persist: false });
 updateScene();
 trimContactIconBackground();
 initializeContactCopyButtons();
