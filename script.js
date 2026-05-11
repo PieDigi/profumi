@@ -1318,7 +1318,7 @@ const initializeContactCopyButtons = () => {
 
 const updateHeroProgress = () => {
   if (!heroSection) return;
-
+}
   const rect = heroSection.getBoundingClientRect();
   const scrollable = rect.height - window.innerHeight;
   const progress = scrollable > 0 ? clamp(-rect.top / scrollable, 0, 1) : 0;
