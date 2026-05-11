@@ -1,4 +1,3 @@
-const BASE = import.meta.env.BASE_URL;
 const root = document.documentElement;
 const siteLoader = document.getElementById("site-loader");
 const heroSection = document.querySelector(".hero-section");
@@ -131,22 +130,22 @@ const LANGUAGE_COPY = {
         {
           label: "What can you do?",
           answer:
-            "I develop backends in Node.js and PHP, manage MySQL databases with encryption, and implement secure authentication (prepared statements, CSRF protection). I have experience in REST APIs, browser extensions (manifest, content scripts, service worker), testing with Jest (80%+ coverage), LAN networking (IP, switches), and hardware assembly. My main project is KeyManager: a password manager with triple-layer security.",
+            "I develop backends in Node.js and PHP, manage MySQL datas with encryption, and implement secure authentication (prepared statements, CSRF protection). I have experience in REST APIs, browser extensions (manifest, content scripts, service worker), testing with Jest (80%+ coverage), LAN networking (IP, switches), and hardware assembly. My main project is KeyManager: a password manager with triple-layer security.",
         },
         {
           label: "What is your best project?",
           answer:
-            "KeyManager: a three-layer credential management system. PHP backend with user authentication and CSRF protection. MySQL database with double-layer encryption (master password + extra layer). JavaScript browser extension that detects login fields and auto-fills secured data. I implemented 30-min session timeout, prepared statements against SQL injection, audit logging, email verification, and tokenised password reset. Jest tests with 80%+ coverage.",
+            "KeyManager: a three-layer credential management system. PHP backend with user authentication and CSRF protection. MySQL data with double-layer encryption (master password + extra layer). JavaScript browser extension that detects login fields and auto-fills secured data. I implemented 30-min session timeout, prepared statements against SQL injection, audit logging, email verification, and tokenised password reset. Jest tests with 80%+ coverage.",
         },
         {
           label: "What excites you about computer science?",
           answer:
-            "Cybersecurity fascinates me — understanding how attackers think. At the Mead Informatica lab we simulated a real attack/defence on a company infrastructure. I also love software architecture: designing systems that actually work, not just look good. And I enjoy discovering how components interconnect (backend, database, frontend, network).",
+            "Cybersecurity fascinates me — understanding how attackers think. At the Mead Informatica lab we simulated a real attack/defence on a company infrastructure. I also love software architecture: designing systems that actually work, not just look good. And I enjoy discovering how components interconnect (backend, data, frontend, network).",
         },
       ],
       facts: [
         "Specialised in backend (Node.js, PHP) and software architecture with a focus on security and testing.",
-        "From design to code: database design, robust authentication, REST APIs, browser extensions, test coverage.",
+        "From design to code: data design, robust authentication, REST APIs, browser extensions, test coverage.",
         "I care that code is secure, maintainable, and tested — it's not enough for it to 'work', it has to be resilient.",
       ],
     },
@@ -214,17 +213,17 @@ const LANGUAGE_COPY = {
         {
           label: "Cosa sai fare?",
           answer:
-            "Sviluppo backend in Node.js e PHP, gestisco database MySQL con crittografia, implemento autenticazione sicura (prepared statements, CSRF protection). Ho esperienza in: API REST, browser extension (manifest, content scripts, service worker), testing con Jest (80%+ coverage), reti LAN (IP, switch), hardware (assemblaggio). Il mio progetto maggiore è KeyManager: password manager con triple-layer security.",
+            "Sviluppo backend in Node.js e PHP, gestisco data MySQL con crittografia, implemento autenticazione sicura (prepared statements, CSRF protection). Ho esperienza in: API REST, browser extension (manifest, content scripts, service worker), testing con Jest (80%+ coverage), reti LAN (IP, switch), hardware (assemblaggio). Il mio progetto maggiore è KeyManager: password manager con triple-layer security.",
         },
         {
           label: "Qual è il tuo progetto migliore?",
           answer:
-            "KeyManager: sistema di gestione credenziali a tre strati. Backend PHP con autenticazione utente e CSRF protection. Database MySQL con doppio livello di crittografia (master password + layer aggiuntivo). Browser extension JavaScript che rileva campi login e auto-compila dati securizzati. Ho implementato session timeout 30 min, prepared statements contro SQL injection, logging per audit trail, email verification e password reset tokenizzato. Test Jest con copertura 80%+.",
+            "KeyManager: sistema di gestione credenziali a tre strati. Backend PHP con autenticazione utente e CSRF protection. Data MySQL con doppio livello di crittografia (master password + layer aggiuntivo). Browser extension JavaScript che rileva campi login e auto-compila dati securizzati. Ho implementato session timeout 30 min, prepared statements contro SQL injection, logging per audit trail, email verification e password reset tokenizzato. Test Jest con copertura 80%+.",
         },
         {
           label: "Cosa ti appassiona dell'informatica?",
           answer:
-            "La cybersecurity mi affascina: capire come ragionano gli attaccanti. Al laboratorio Mead Informatica abbiamo simulato un vero attacco/difesa su infrastruttura aziendale. Mi piace anche l'architettura software — progettare sistemi che funzionano davvero, non solo belli. E mi attrae scoprire come i componenti si interconnettono (backend, database, frontend, network).",
+            "La cybersecurity mi affascina: capire come ragionano gli attaccanti. Al laboratorio Mead Informatica abbiamo simulato un vero attacco/difesa su infrastruttura aziendale. Mi piace anche l'architettura software — progettare sistemi che funzionano davvero, non solo belli. E mi attrae scoprire come i componenti si interconnettono (backend, data, frontend, network).",
         },
       ],
       facts: [
