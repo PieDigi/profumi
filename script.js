@@ -1,8 +1,6 @@
-const BASE = import.meta.env.BASE_URL;
 const root = document.documentElement;
 const siteLoader = document.getElementById("site-loader");
 const heroSection = document.querySelector(".hero-section");
-const heroPeelElement = document.getElementById("hero-peel");
 const nameSection = document.querySelector(".name-section");
 const nameRows = [...document.querySelectorAll(".name-row")];
 const topbar = document.querySelector(".topbar");
@@ -78,8 +76,6 @@ let collapseAnimation = null;
 let suppressedHoverButton = null;
 let lastPointerPosition = null;
 let assistantRequestId = 0;
-let heroPeel = null;
-let heroPeelTime = 0;
 let currentLanguage = "zh";
 let pendingAssistantQuestion = "";
 const visibleIssueSections = new Set();
@@ -909,50 +905,6 @@ const applyLanguage = (language, { persist = true } = {}) => {
   }
 };
 
-const setupHeroPeelPath = () => {
-  if (!heroPeel || !heroPeelElement) return;
-
-  heroPeel.setupDimensions();
-
-  const width = heroPeelElement.offsetWidth;
-  const height = heroPeelElement.offsetHeight;
-
-  heroPeel.setPeelPath(
-    width,
-    height,
-    width * 0.992,
-    height * 0.972,
-    width * 0.62,
-    height * 0.28,
-    width * -0.22,
-    height * -0.26,
-  );
-
-  heroPeel.setTimeAlongPath(heroPeelTime);
-};
-
-const setupHeroPeel = () => {
-  if (!heroPeelElement || typeof window.Peel !== "function" || heroPeel) return;
-
-  heroPeel = new window.Peel(heroPeelElement, {
-    corner: window.Peel.Corners.BOTTOM_RIGHT,
-    setPeelOnInit: false,
-    topShadowBlur: 8,
-    topShadowAlpha: 0.22,
-    topShadowOffsetX: 1,
-    topShadowOffsetY: 2,
-    backReflection: false,
-    backShadowAlpha: 0.16,
-    backShadowSize: 0.04,
-    bottomShadowDarkAlpha: 0.22,
-    bottomShadowLightAlpha: 0.06,
-  });
-
-  heroPeel.setFadeThreshold(1.01);
-  setupHeroPeelPath();
-  heroPeel.setTimeAlongPath(0);
-};
-
 const normalizeProjectUrl = (value) => {
   if (!value) return "";
   return /^https?:\/\//i.test(value) ? value : `https://${value}`;
@@ -1371,10 +1323,7 @@ const updateHeroProgress = () => {
   const scrollable = rect.height - window.innerHeight;
   const progress = scrollable > 0 ? clamp(-rect.top / scrollable, 0, 1) : 0;
   const liftProgress = easeOutCubic(clamp((progress - 0.018) / 0.18, 0, 1));
-  const peelIntro = easeOutCubic(clamp(progress / 0.06, 0, 1));
-  const peelBuild = easeInOutQuad(clamp(progress / 0.58, 0, 1));
   const travelProgress = easeInOutQuad(clamp((progress - 0.6) / 0.34, 0, 1));
-  const peelProgress = Math.min(0.998, 0.03 * peelIntro + 0.968 * peelBuild);
 
   document.body.classList.toggle("is-hero-active", progress < 0.92);
   root.style.setProperty("--hero-progress", progress.toFixed(3));
@@ -1392,12 +1341,6 @@ const updateHeroProgress = () => {
   root.style.setProperty("--hero-shift-y", `${travelProgress * window.innerHeight * -0.96}px`);
   root.style.setProperty("--hero-rotate", `${travelProgress * -20}deg`);
   root.style.setProperty("--hero-scale", `${1 + liftProgress * 0.012 - travelProgress * 0.098}`);
-
-  if (heroPeel) {
-    heroPeelTime = peelProgress;
-    heroPeel.setTimeAlongPath(peelProgress);
-  }
-};
 
 const updateNameProgress = () => {
   if (!nameSection || nameRows.length === 0) return;
@@ -1683,14 +1626,12 @@ currentLanguage = getStoredLanguage() ?? "zh";
 document.body.classList.toggle("is-low-memory-device", lowMemoryDevice);
 initializeSkillBadges();
 issueSections.forEach((section) => issueObserver.observe(section));
-setupHeroPeel();
 applyLanguage(currentLanguage, { persist: false });
 updateScene();
 trimContactIconBackground();
 initializeContactCopyButtons();
 window.addEventListener("scroll", requestSceneUpdate, { passive: true });
 window.addEventListener("resize", () => {
-  setupHeroPeelPath();
   requestSceneUpdate();
 });
 
