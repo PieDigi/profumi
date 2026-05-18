@@ -825,7 +825,7 @@ const dismissSiteLoader = () => {
     siteLoader.hidden = true;
   }, 620);
 };
-window.addEventListener('load', dismissSiteLoader());
+window.addEventListener('load', dismissSiteLoader);
 
 const applyAssistantLanguage = () => {
   const assistantCopy = getAssistantCopy();
@@ -1134,7 +1134,7 @@ const renderProjectCardCover = (button, localizedDetail) => {
       );
       return;
     }
-*/
+
     const title = button.querySelector("strong");
     const type = button.querySelector(".project-card__type");
     const intro = button.querySelector("p");
@@ -1149,7 +1149,7 @@ const renderProjectCardCover = (button, localizedDetail) => {
         : `${localizedDetail.title}, ${localizedDetail.type}`,
     );
   });
-};
+};*/
 
 const getToolBadgeNumber = (badge) => {
   const badgeClass = [...badge.classList].find((className) => /^tool-badge--\d+$/.test(className));
@@ -1318,7 +1318,7 @@ const initializeContactCopyButtons = () => {
 
 const updateHeroProgress = () => {
   if (!heroSection) return;
-}
+
   const rect = heroSection.getBoundingClientRect();
   const scrollable = rect.height - window.innerHeight;
   const progress = scrollable > 0 ? clamp(-rect.top / scrollable, 0, 1) : 0;
@@ -1341,7 +1341,8 @@ const updateHeroProgress = () => {
   root.style.setProperty("--hero-shift-y", `${travelProgress * window.innerHeight * -0.96}px`);
   root.style.setProperty("--hero-rotate", `${travelProgress * -20}deg`);
   root.style.setProperty("--hero-scale", `${1 + liftProgress * 0.012 - travelProgress * 0.098}`);
-
+}
+  
 const updateNameProgress = () => {
   if (!nameSection || nameRows.length === 0) return;
 
